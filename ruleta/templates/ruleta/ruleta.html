@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta Casino</title>
+    <link rel="stylesheet" href="{% static 'ruleta/ruleta.css' %}">
+</head>
+<body>
+    <div class="casino-wrapper">
+        <h1>🎰 Ruleta Casino 🎰</h1>
+
+        <div class="ruleta-container">
+            <div class="pointer"></div>
+
+            <!-- Imagen de la ruleta europea -->
+            <img id="wheel" class="wheel" src="{% static 'ruleta/img/ruleta.jpg' %}" alt="Ruleta europea">
+
+            <div class="center-cover"></div>
+        </div>
+
+        <button id="btn-girar">GIRAR RULETA</button>
+
+        <div class="resultado">
+            <p><span id="numero">--</span></p>
+            <p><span id="color">---</span></p>
+        </div>
+    </div>
+
+    <script src="{% static 'ruleta/ruleta.js' %}"></script>
+</body>
+</html>
