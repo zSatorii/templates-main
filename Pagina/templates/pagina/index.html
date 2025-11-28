@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería Dulce Hogar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="page">
+        <header class="header">
+            <div class="brand">
+                <div class="logo-circle">P</div>
+                <div class="brand-text">
+                    <h1>{{ saludo }}</h1>
+                    <p>Pan recién horneado, café caliente y una sonrisa en cada visita.</p>
+                </div>
+            </div>
+            <div class="header-badge">
+                <span></span>
+                Horno encendido ahora mismo
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="main-info">
+                <h2>Pan del día: {{ pan }}</h2>
+                <p class="subtitle">
+                    Preparado con ingredientes seleccionados y una receta casera de nuestra panadería.
+                </p>
+
+                <article class="card">
+                    <div class="chip">
+                        <i>🥐</i>
+                        Especial de hoy
+                    </div>
+
+                    <div class="price-row">
+                        <span class="label">Precio:</span>
+                        <span class="value">{{ precio }}</span>
+                    </div>
+
+                    {% if integral %}
+                    <div class="tag-integral">
+                        Pan integral lleno de fibra
+                    </div>
+                    {% endif %}
+
+                    <div class="availability">
+                        <span class="pill-status">
+                            {% if disponible.enhorno %}Disponible en horno{% else %}Agotado por ahora{% endif %}
+                        </span>
+                        <span>
+                            {% if disponible.enhorno %}
+                                ¡Ven antes de que se acabe!
+                            {% else %}
+                                Pregunta por el siguiente horneado.
+                            {% endif %}
+                        </span>
+                    </div>
+                </article>
+
+                <article class="card list-card" style="margin-top: 1.4rem;">
+                    <h3>Otros panes que puedes encontrar hoy:</h3>
+                    <ul>
+                        {% for item in listadepan %}
+                        <li>{{ item }}</li>
+                        {% empty %}
+                        <li>Por ahora no hay más panes registrados.</li>
+                        {% endfor %}
+                    </ul>
+                </article>
+
+                <div class="cta">
+                    <button class="btn-primary">Hacer pedido</button>
+                    <button class="btn-ghost">Ver carta completa</button>
+                </div>
+            </div>
+
+            <aside class="side-panel">
+                <p class="note">
+                    Nuestro obrador trabaja todos los días desde las 5:00 a.m. para que el pan llegue a tu mesa
+                    con la mejor textura y aroma.
+                </p>
+                <p class="note">
+                    Puedes personalizar tu pedido para eventos, desayunos sorpresa y celebraciones especiales.
+                </p>
+            </aside>
+        </section>
+
+        <footer class="footer">
+            <span>Panadería Dulce Hogar · Hecho con amor y masa madre.</span>
+            <span>Abierto hoy de 6:00 a.m. a 9:00 p.m.</span>
+            <span>gracias chajepete</span>
+        </footer>
+    </main>
+</body>
+</html>
